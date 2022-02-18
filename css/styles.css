@@ -576,7 +576,7 @@ a {
 }
 .modal {
   width: 528px;
-  min-height: 581px;
+  height: 581px;
   background-color: var(--text-color-major-white);
   border-radius: 4px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -596,7 +596,7 @@ a {
   letter-spacing: 0.03em;
   color: var(--text-color-major-dark);
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 12px;
 }
 .close-btn {
   width: 30px;
@@ -610,6 +610,18 @@ a {
   position: absolute;
   top: 8px;
   right: 8px;
+  outline: none;
+
+  transition-property: border-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.close-btn:hover .close-icon,
+.close-btn:focus .close-icon,
+.close-btn:hover,
+.close-btn:focus {
+  border-color: var(--accent-color);
+  fill: var(--accent-color);
 }
 .close-icon {
   width: 18px;
@@ -621,10 +633,10 @@ a {
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.close-icon:hover,
+/* .close-icon:hover,
 .close-icon:focus {
   fill: var(--accent-color);
-}
+} */
 .modal-label {
   display: block;
   font-size: 12px;
@@ -696,10 +708,17 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-left: 10px;
 }
 .policy-wrap {
   display: flex;
   align-items: center;
+
+  font-size: 14px;
+  line-height: 1.71;
+  /* identical to box height, or 171% */
+  letter-spacing: 0.03em;
+  color: #757575;
 }
 .checking-wraper {
   position: relative;
@@ -707,8 +726,18 @@ a {
 .policy-icon {
   position: absolute;
   top: 50%;
-  left: -20px;
+  left: -25px;
   transform: translateY(-50%);
+  border: 1px solid transparent;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+.checking {
+  margin-right: 10.1px;
+  outline: none;
+}
+.checking:focus + .modal-label-check .checking-wraper .policy-icon {
+  border-color: var(--accent-color);
 }
 .checked {
   opacity: 0;
@@ -719,10 +748,14 @@ a {
 .checking:checked + .modal-label-check .checking-wraper .checked {
   opacity: 1;
 }
+.checking:checked + .modal-label-check .checking-wraper .policy-icon {
+  border: none;
+}
 
 .policy-link {
   color: var(--accent-color);
   text-decoration: underline;
+  margin-left: 5px;
 }
 .is-hidden {
   opacity: 0;
